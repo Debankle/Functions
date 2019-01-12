@@ -7,4 +7,4 @@ add(a, b)
 out(a)
 out(b)
 
-done(1)
+done(0)
