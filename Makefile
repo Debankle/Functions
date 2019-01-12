@@ -33,5 +33,6 @@ test:
 
 clean:
 	rm -rf $(TARGET)
+	rm -rf tests/main_1 tests/main_2 tests/main_3 tests/main_4
 
 .PHONY: $(TARGET)
