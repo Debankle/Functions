@@ -1,11 +1,15 @@
 # Ignore compiled binary
-/bin
+bin
+!bin/.gitkeep
 
 # Ignore compiled tests
-/tests
+tests/main_1
+tests/main_2
+tests/main_3
+tests/main_4
 
 # Ignore IDE extras
-.vscode/*
+.vscode
 
 # Ignore System Files
 .DS_Store
