@@ -16,6 +16,8 @@ const void Parser::Parse() {
                 done(this->tokens[++n].substr(5, -1));
             } else if (this->tokens[n].substr(5, -1) == "out") {
                 out(this->tokens[++n].substr(5, -1));
+            } else if (this->tokens[n].substr(5, -1) == "add") {
+                add(this->tokens[++n].substr(5, -1));
             } else {
                 std::cout << "Unknown function! Kachow!" << std::endl;
                 exit(1);
@@ -46,6 +48,30 @@ const void Parser::init(std::string args) {
 const void Parser::out(std::string args) {
     std::string print_string = "printf(\"%d\\n\"," + args + ");\n";
     this->main_section.append(print_string);
+}
+
+/*
+    Add function. Requires two arguments of the same type
+    adds the second argument to the first
+    e.g add(a, b)       =>      a = a + b
+*/
+const void Parser::add(std::string args) {
+    if (args.find(',') != std::string::npos) {
+        std::string token1, token2;
+        for (char c : args) {
+            if (c == ',') {
+                token2 = token1;
+                token1 = "";
+            } else {
+                token1 += c;
+            }
+        }
+        std::string add_str = token2 + "=" + token2 + "+" + token1 + ";\n";
+        this->main_section.append(add_str);
+    } else {
+        std::cerr << "No comma or two args provided" << std::endl;
+        exit(1);
+    }
 }
 
 const void Parser::done(std::string args) {
