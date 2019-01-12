@@ -1,6 +1,5 @@
 # Ignore compiled binary
-bin
-!bin/.gitkeep
+bin/main
 
 # Ignore compiled tests
 tests/main_1
