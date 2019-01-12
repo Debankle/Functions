@@ -1,8 +1,15 @@
 # TODO list
 
 ## Syntax changes
-out() - accept no value, and just print a new line
-      - detect "" and print a string
+
+#### out():
+* accept no value, and just print a new line      
+* detect "" and print a string
+
+#### init() 
+* remove / obselete
+* change it to be the name of the data type e.g.  
+        ```int(a) char(b) string(c) bool(d)```
 ___
 
 ## Refactoring
