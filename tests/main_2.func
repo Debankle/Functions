@@ -1,0 +1,5 @@
+require(sys)
+
+out(1224)
+out("poop")
+done(0)
