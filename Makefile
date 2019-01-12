@@ -26,6 +26,10 @@ test:
 	./bin/main -f tests/main_3.func -o tests/main_3
 	./tests/main_3
 	@echo "\n"
+	@echo "Test 4:"
+	./bin/main -f tests/main_4.func -o tests/main_4
+	./tests/main_4
+	@echo "\n"
 
 clean:
 	rm -rf $(TARGET)

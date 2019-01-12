@@ -15,6 +15,7 @@ class Parser {
     const void init(std::string args);
     const void out(std::string args);
     const void add(std::string args);
+    const void sub(std::string args);
     const void done(std::string args);
 
     const std::string getCode();

@@ -1,0 +1,12 @@
+# Ignore compiled binary
+/bin
+
+# Ignore compiled tests
+/tests
+
+# Ignore IDE extras
+.vscode/*
+
+# Ignore System Files
+.DS_Store
+Thumbs.db
