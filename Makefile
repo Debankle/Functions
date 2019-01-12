@@ -30,9 +30,13 @@ test:
 	./bin/main -f tests/main_4.func -o tests/main_4
 	./tests/main_4
 	@echo "\n"
+	@echo "Test 5:"
+	./bin/main -f tests/mul_test.func -o tests/mul_test
+	./tests/mul_test
+	@echo "\n"
 
 clean:
 	rm -rf $(TARGET)
-	rm -rf tests/main_1 tests/main_2 tests/main_3 tests/main_4
+	rm -rf tests/main_1 tests/main_2 tests/main_3 tests/main_4 tests/mul_test
 
 .PHONY: $(TARGET)
