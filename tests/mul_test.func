@@ -1,0 +1,8 @@
+require(sys)
+
+init(a)
+init(b)
+
+mul(a, b)
+
+done(0)
