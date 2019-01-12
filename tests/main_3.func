@@ -1,4 +1,10 @@
 require(sys)
-init(a, 4)
+
+init(a)
+init(b)
+
+add(a, b)
 out(a)
+out(b)
+
 done(1)
