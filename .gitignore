@@ -6,6 +6,9 @@ tests/main_1
 tests/main_2
 tests/main_3
 tests/main_4
+tests/mul_test
+#tests/*
+#!/tests/*.*
 
 # Ignore IDE extras
 .vscode
