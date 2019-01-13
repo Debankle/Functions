@@ -11,6 +11,9 @@ For every compile, the `-f` flag must be used to specify the file input, and `-o
 functions -f main.func -o hello
 ```
 
+### Installation
+Read the [INSTALL.md](/INSTALL.md) for instructions on how to install
+
 ### Git usage
 There are currently two branches, master and dev. All work is done on dev, and then merged into master when operational.
 
