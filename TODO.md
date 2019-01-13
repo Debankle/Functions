@@ -7,12 +7,16 @@
 * detect "" and print a string
 
 #### init() 
-* remove / obselete
-* change it to be the name of the data type e.g.  
-        ```int(a) char(b) string(c) bool(d)```
+* detect type of value
+* possibly value is required, or use auto
+
 ___
 
 ## Refactoring
+
+#### All Paser functions
+rewrite so it splits the args into a string vector, splitting at every comma
+
 ### Compiler
 Improve design so testing is easier
 
