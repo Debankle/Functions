@@ -29,6 +29,8 @@ const void Parser::Parse() {
                 require(this->tokens[++n].substr(5, -1));
             } else if (this->tokens[n].substr(5, -1) == "init") {
                 init(this->tokens[++n].substr(5, -1));
+            } else if (this->tokens[n].substr(5, -1) == "set") {
+                set(this->tokens[++n].substr(5, -1));
             } else if (this->tokens[n].substr(5, -1) == "done") {
                 done(this->tokens[++n].substr(5, -1));
             } else if (this->tokens[n].substr(5, -1) == "out") {
@@ -65,8 +67,8 @@ const void Parser::require(std::string args) {
 
 /*
     Init function. Requires one or two arguments, seperated by a comma
-    If one arg is provided, it is initialized with no value, otherwise it is initialised by the second value
-    e.g. init(a) or init(a, 4)
+    If one arg is provided, it is initialized with no value, otherwise it is
+   initialised by the second value e.g. init(a) or init(a, 4)
 */
 const void Parser::init(std::string args) {
     std::string define_string;
@@ -86,6 +88,31 @@ const void Parser::init(std::string args) {
     }
     define_string += ";\n";
     this->main_section.append(define_string);
+}
+
+/*
+    Set function. Requires two parameters
+    sets the second arg as a value to the first
+    e.g. set(a, 4)  =>  a = 4
+    set(a, b)  => a = b
+*/
+const void Parser::set(std::string args) {
+    if (args.find(',') != std::string::npos) {
+        std::string token1, token2;
+        for (char c : args) {
+            if (c == ',') {
+                token2 = token1;
+                token1 = "";
+            } else {
+                token1 += c;
+            }
+        }
+        std::string assign_str = token2 + "=" + token1 + ";\n";
+        this->main_section.append(assign_str);
+    } else {
+        std::cerr << "Two arguments must be provided" << std::endl;
+        exit(1);
+    }
 }
 
 const void Parser::out(std::string args) {
