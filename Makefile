@@ -2,12 +2,14 @@ CXX=g++-8
 GCC_LOC = $(shell which gcc)
 CXXINCLUDE=-I/usr/local/include
 CXXLIBS=-L/usr/local/lib/gtest
-CXXFLAGS=-Wall --pedantic-errors -std=c++17 -DGCC_LOC=\"$(GCC_LOC)\" #$(CXXINCLUDE) $(CXXLIBS)
+CXXFLAGS=-Wall -O2 --pedantic-errors -std=c++17 -DGCC_LOC=\"$(GCC_LOC)\" #$(CXXINCLUDE) $(CXXLIBS)
 
-TARGET=bin/main
+TARGET=bin/func
 SRCS=src/*
 
-$(TARGET): $(SRCS)
+.PHONY: make install test clean
+
+make: $(SRCS)
 	@echo "Compiling"
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRCS)
 	chmod +x $(TARGET)
@@ -18,29 +20,8 @@ install: $(TARGET)
 	cp $(TARGET) /usr/local/bin
 
 test:
-	@echo "Test 1:"
-	./bin/main -f tests/main_1.func -o tests/main_1
-	./tests/main_1
-	@echo "\n"
-	@echo "Test 2:"
-	./bin/main -f tests/main_2.func -o tests/main_2
-	./tests/main_2
-	@echo "\n"
-	@echo "Test 3:"
-	./bin/main -f tests/main_3.func -o tests/main_3
-	./tests/main_3
-	@echo "\n"
-	@echo "Test 4:"
-	./bin/main -f tests/main_4.func -o tests/main_4
-	./tests/main_4
-	@echo "\n"
-	@echo "Test 5:"
-	./bin/main -f tests/mul_test.func -o tests/mul_test
-	./tests/mul_test
-	@echo "\n"
+	# TODO: Write compile commands for the tests
 
 clean:
 	rm -rf $(TARGET)
-	rm -rf tests/main_1 tests/main_2 tests/main_3 tests/main_4 tests/mul_test
-
-.PHONY: $(TARGET)
+	find tests/ -not -name "*.func" -type f | xargs rm -rf

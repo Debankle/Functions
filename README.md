@@ -9,7 +9,7 @@ Read the [INSTALL.md](/INSTALL.md) for instructions on how to install
 
 ### Usage
 This language is a compiler/transpiler, as it converts the written code to c++, and then uses gcc to compile this down to a binary.  
-For every compile, the `-f` flag must be used to specify the file input, and `-o` can be used to specify output, but will default to `./main` if not defined. For example:
+For every compile, the `-f` flag must be used to specify the file input, and `-o` can be used to specify output, but will default to `./func` if not defined. For example:
 ```
 functions -f main.func -o hello
 ```

@@ -63,8 +63,28 @@ const void Parser::require(std::string args) {
     this->include_section.append(require_string);
 }
 
+/*
+    Init function. Requires one or two arguments, seperated by a comma
+    If one arg is provided, it is initialized with no value, otherwise it is initialised by the second value
+    e.g. init(a) or init(a, 4)
+*/
 const void Parser::init(std::string args) {
-    std::string define_string = "int " + args + ";\n";
+    std::string define_string;
+    if (args.find(',') != std::string::npos) {
+        std::string token1, token2;
+        for (char c : args) {
+            if (c == ',') {
+                token2 = token1;
+                token1 = "";
+            } else {
+                token1 += c;
+            }
+        }
+        define_string = "int " + token2 + " = " + token1;
+    } else {
+        define_string = "int " + args;
+    }
+    define_string += ";\n";
     this->main_section.append(define_string);
 }
 
