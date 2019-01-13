@@ -1,0 +1,9 @@
+require(sys)
+
+init(a, false)
+init(b, true)
+
+out(a)
+out(b)
+
+done(0)
