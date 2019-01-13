@@ -2,11 +2,14 @@ require(sys)
 
 init(a)
 init(b, 4)
+init(c)
 
 set(a, 5)
+set(c, "hello")
 
 out(a)
 out(b)
+out(c)
 
 set(a, b)
 out(a)

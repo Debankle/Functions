@@ -1,4 +1,0 @@
-require(sys)
-init(a)
-out(1)
-done(0)

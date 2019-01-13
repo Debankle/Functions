@@ -1,10 +1,9 @@
 require(sys)
 
-init(a)
-init(b)
+init(a, 3)
+init(b, 4)
 
 sub(a, b)
 out(a)
-out(b)
 
 done(0)

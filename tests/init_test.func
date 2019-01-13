@@ -2,7 +2,10 @@ require(sys)
 
 init(a)
 init(b, 4)
+init(c, "hello world")
 
+out(a)
 out(b)
+out(c)
 
 done(0)

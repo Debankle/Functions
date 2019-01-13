@@ -1,5 +1,10 @@
 require(sys)
 
+init(a)
+set(a, 7)
+
+out(a)
 out(1224)
 out("poop")
+
 done(0)
