@@ -1,0 +1,8 @@
+require(sys)
+
+init(a)
+init(b, 4)
+
+out(b)
+
+done(0)
