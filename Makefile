@@ -13,6 +13,10 @@ $(TARGET): $(SRCS)
 	chmod +x $(TARGET)
 	@echo ""
 
+install: $(TARGET)
+	@echo "Installing Functions to /usr/local/bin"
+	cp $(TARGET) /usr/local/bin
+
 test:
 	@echo "Test 1:"
 	./bin/main -f tests/main_1.func -o tests/main_1

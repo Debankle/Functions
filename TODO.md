@@ -23,3 +23,7 @@ Rewrite so tests can be run, checking for files and stuff
 Remove all arg stuff from main. Add a function to ArgParser to do that  
 Only stuff left is ArgsParse object init and Compiler init and run  
 Makes unit tests easier  
+
+## Project Changes
+__Change from Makefile to CMake!!!__  
+need help with this as i have no experience
