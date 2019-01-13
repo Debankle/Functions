@@ -80,7 +80,7 @@ const void Parser::init(std::string args) {
                 token1 += c;
             }
         }
-        define_string = "int " + token2 + " = " + "token1";
+        define_string = "int " + token2 + " = " + token1;
     } else {
         define_string = "int " + args;
     }
