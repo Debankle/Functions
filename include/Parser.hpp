@@ -28,13 +28,21 @@ class Parser {
 
     const void Parse();
 
+    // Basic functions
     const void require(std::string args);
     const void init(std::string args);
+    const void set(std::string args);
+
+    // Print function
     const void out(std::string args);
+
+    // Math functions
     const void add(std::string args);
     const void sub(std::string args);
     const void mul(std::string args);
     const void div(std::string args);
+
+    // Return function
     const void done(std::string args);
 
     const std::string getCode();
