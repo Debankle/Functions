@@ -18,26 +18,7 @@ install: $(TARGET)
 	cp $(TARGET) /usr/local/bin
 
 test:
-	@echo "Test 1:"
-	./bin/func -f tests/main_1.func -o tests/main_1
-	./tests/main_1
-	@echo "\n"
-	@echo "Test 2:"
-	./bin/func -f tests/main_2.func -o tests/main_2
-	./tests/main_2
-	@echo "\n"
-	@echo "Test 3:"
-	./bin/func -f tests/main_3.func -o tests/main_3
-	./tests/main_3
-	@echo "\n"
-	@echo "Test 4:"
-	./bin/func -f tests/main_4.func -o tests/main_4
-	./tests/main_4
-	@echo "\n"
-	@echo "Test 5:"
-	./bin/func -f tests/mul_test.func -o tests/mul_test
-	./tests/mul_test
-	@echo "\n"
+	# TODO: Write compile commands for the tests
 
 clean:
 	rm -rf $(TARGET)
