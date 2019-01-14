@@ -4,7 +4,7 @@
 // Functions is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// any later version.
 
 // Functions is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -15,8 +15,8 @@
 // along with Functions.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#ifndef __LANGUAGE_COMPILER_H
-#define __LANGUAGE_COMPILER_H
+#ifndef __FUNCTIONS_COMPILER_H
+#define __FUNCTIONS_COMPILER_H
 
 #include "Lexer.hpp"
 #include "Parser.hpp"
@@ -53,4 +53,4 @@ class Compiler {
     std::string gcc_loc;
 };
 
-#endif // __LANGUAGE_COMPILER_H
+#endif // __FUNCTIONS_COMPILER_H

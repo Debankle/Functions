@@ -4,7 +4,7 @@
 // Functions is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// any later version.
 
 // Functions is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -15,8 +15,8 @@
 // along with Functions.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#ifndef __LANGUAGE_ARGS_PARSER_H
-#define __LANGUAGE_ARGS_PARSER_H
+#ifndef __FUNCTIONS_ARGS_PARSER_H
+#define __FUNCTIONS_ARGS_PARSER_H
 
 // Credit to stackoverflow users/85381 and users/1031417 for this
 // Some changes have been made, but the concept originated from there
@@ -42,4 +42,4 @@ class ArgsParser {
     const map<string, string> token_map = {{"--file", "-f"}, {"--help", "-h"}};
 };
 
-#endif // __LANGUAGE_ARGS_PARSER_H
+#endif // __FUNCTIONS_ARGS_PARSER_H
