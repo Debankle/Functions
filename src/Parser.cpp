@@ -17,7 +17,10 @@
 
 #include "../include/Parser.hpp"
 
-Parser::Parser(std::vector<std::string> tokens) { this->tokens = tokens; }
+Parser::Parser(std::vector<std::string> tokens) {
+    this->tokens = tokens;
+    this->include_section.append("typedef enum { false, true } bool;\n");
+}
 
 // Add a function for every call for the language. This file will get very long
 // and complicated Possibly create seperate files for types, e.g. all maths in
@@ -74,7 +77,7 @@ const void Parser::init(std::string args) {
     std::string define_string;
     if (args.find(',') != std::string::npos) {
         std::string token1, token2, type;
-        
+
         for (char c : args) {
             if (c == ',') {
                 token2 = token1;
@@ -87,11 +90,9 @@ const void Parser::init(std::string args) {
         if (token1.find("\"") != std::string::npos) {
             type = "char";
             token2 += "[]";
-        } else if (token1.find("false") != std::string::npos || token1.find("true") != std::string::npos) {
+        } else if (token1.find("false") != std::string::npos ||
+                   token1.find("true") != std::string::npos) {
             type = "bool";
-            if (this->include_section.find("typedef enum { false, true } bool;\n") == std::string::npos) {
-                this->include_section.append("typedef enum { false, true } bool;\n");
-            }
         } else {
             type = "int";
         }
