@@ -27,6 +27,7 @@ class Parser {
     Parser(std::vector<std::string> tokens);
 
     const void Parse();
+    const int getType(std::string token);
 
     // Basic functions
     const void require(std::string args);
@@ -55,6 +56,8 @@ class Parser {
     std::string main_section;
 
     std::string raw_code;
+
+    enum { TYPE_INT, TYPE_STRING, TYPE_BOOL };
 };
 
 #endif // __LANGUAGE_PARSER_H
