@@ -6,7 +6,7 @@ tests/*
 !/tests/*.*
 
 # Ignore IDE extras
-.vscode
+.vscode/
 
 # Ignore System Files
 .DS_Store
