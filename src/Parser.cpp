@@ -22,6 +22,10 @@ Parser::Parser(std::vector<std::string> tokens) {
     this->include_section.append("typedef enum { false, true } bool;\n");
 }
 
+const int Parser::getType(std::string token) {
+    
+}
+
 // Add a function for every call for the language. This file will get very long
 // and complicated Possibly create seperate files for types, e.g. all maths in
 // one file
