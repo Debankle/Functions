@@ -4,6 +4,7 @@ bin/func
 # Ignore compiled tests
 tests/*
 !/tests/*.*
+!src/concept
 
 # Ignore IDE extras
 .vscode/
