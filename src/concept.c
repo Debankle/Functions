@@ -20,19 +20,23 @@
 // Or somewhat similar
 
 #include <stdio.h>
+#include <string.h>
 
 typedef enum { false, true } bool;
 
-typedef enum { TYPE_INT, TYPE_STRING, TYPE_BOOL, TYPE_NULL };
+typedef enum { TYPE_INT, TYPE_STRING, TYPE_BOOL, TYPE_NULL } types_t;
 
+/* Not sure if this is worth using as a type
 typedef struct {
     char *s;
     size_t len;
 } string_t;
+*/
 
 typedef union {
     int i;
-    string_t s;
+    //string_t s;
+    char *s;
     bool b;
 } values_t;
 
@@ -53,14 +57,15 @@ int main() {
 
     variable_t c;
     c.type = TYPE_STRING;
-    c.value.s.s = "Hello";
-    c.value.s.len = strlen(c.value.s.s);
+    //c.value.s.s = "Hello";
+    //c.value.s.len = strlen(c.value.s.s);
+    c.value.s = "Hello";
 
     variable_t d;
     d.type = TYPE_NULL;
 
     printf("%d\n", a.value);
     printf("%d\n", b.value);
-    printf("%d\n", c.value.s.len);
+    printf("%s\n", c.value);
     printf("%p\n", d.value);
 }
