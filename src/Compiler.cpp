@@ -95,7 +95,7 @@ const void Compiler::WriteToFile() {
 */
 const void Compiler::CompileCFile() {
     std::string str_cmd = this->gcc_loc + " -o " + this->destination + " " +
-                          this->destination + ".c";
+                          this->destination + ".c > /dev/null";
     const char *cmd = str_cmd.c_str();
     int ret = system(cmd);
     if (ret == 256) {
@@ -104,7 +104,7 @@ const void Compiler::CompileCFile() {
         system(str_rm.c_str());
         exit(1);
     }
-    std::string str_rm = "rm -rf " + this->destination + ".c";
+    std::string str_rm = "rm -rf " + this->destination + ".c > /dev/null";
     system(str_rm.c_str());
 }
 
