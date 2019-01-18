@@ -21,7 +21,6 @@ Currently no known issues, unless they are intentional
 There are currently two branches, master and dev. All work is done on dev, and then merged into master when operational.
 
 ### Documentation
-
 All the documentation for the language, however small it may be, is stored in [SYNTAX.md](/docs/SYNTAX.md)
 
 ### Getting Help
