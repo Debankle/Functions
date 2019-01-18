@@ -100,7 +100,7 @@ const void Compiler::CompileCFile() {
     int ret = system(cmd);
     if (ret == 256) {
         std::cout << "Error compiling " << this->source << std::endl;
-        std::string str_rm = "rm -rf " + this->destination + ".c";
+        std::string str_rm = "rm -rf " + this->destination + ".c > /dev/null";
         system(str_rm.c_str());
         exit(1);
     }
