@@ -22,8 +22,12 @@ Parser::Parser(std::vector<std::string> tokens) {
     this->include_section.append("typedef enum { false, true } bool;\n");
 }
 
+/*
+    returns type detected in variable as an int from the type enum
+*/
 const int Parser::getType(std::string token) {
-    
+    // Return type from type enum
+    return Parser::TYPE_INT;
 }
 
 // Add a function for every call for the language. This file will get very long
