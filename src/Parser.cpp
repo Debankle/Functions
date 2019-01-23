@@ -19,7 +19,13 @@
 
 Parser::Parser(std::vector<std::string> tokens) {
     this->tokens = tokens;
-    this->include_section.append("typedef enum { false, true } bool;\n");
+    this->define_section.append("typedef enum { false, true } bool;\n");
+    this->define_section.append("typedef enum { TYPE_INT, TYPE_BOOL, TYPE_STRING } types_t;\n");
+    this->define_section.append(
+        "typedef struct { char *s; size_t len; } string_t;\n");
+    this->define_section.append(
+        "typedef union { int i; string_t s; bool b; } values_t;\n");
+    this->define_section.append("typedef struct { values_t value; int type; } variable_t;\n");
 }
 
 /*
@@ -55,7 +61,9 @@ const void Parser::Parse() {
             } else if (this->tokens[n].substr(5, -1) == "div") {
                 div(this->tokens[++n].substr(5, -1));
             } else {
-                std::cout << "Unknown function! Kachow!" << std::endl;
+                std::cout << "Unknown function "
+                          << this->tokens[n].substr(5, -1) << "! Kachow!"
+                          << std::endl;
                 exit(1);
             }
         } else if (this->tokens[n].substr(0, 4) == "args") {
@@ -66,8 +74,8 @@ const void Parser::Parse() {
             exit(1);
         }
     }
-    this->raw_code =
-        this->include_section + "int main() {\n" + this->main_section + "}";
+    this->raw_code = this->include_section + this->define_section +
+                     "int main() {\n" + this->main_section + "}";
 }
 
 const void Parser::require(std::string args) {
@@ -82,6 +90,53 @@ const void Parser::require(std::string args) {
     it is initialised by the second value e.g. init(a) or init(a, 4)
 */
 const void Parser::init(std::string args) {
+    /*
+       TODO: Rewrite function
+       If the args have a comma, get token 1 and 2. Token 1 is the value,
+       token2 is the variable name Get they type of token1, it it has "\"" it is
+       a string_t, it it has false or true it is a bool, otherwise it is an int
+       create a new variable_t with name of token2. Set the value to token1, set
+       variable_t.type to type enum and set variable_t.print_key to the print
+       key If there is no comma, create a variable_t with name args
+    */
+
+    std::string define_string;
+    if (args.find(',') != std::string::npos) {
+        std::string token1, token2;
+
+        for (char c : args) {
+            if (c == ',') {
+                token2 = token1;
+                token1 = "";
+            } else {
+                token1 += c;
+            }
+        }
+
+        if (token1.find("\"") != std::string::npos) {
+            define_string = "variable_t " + token2 + ";\n";
+            define_string += token2 + ".type = TYPE_STRING;\n";
+            define_string += token2 + ".value.s.s = " + token1 + ";\n";
+            define_section += token2 + ".value.s.len = " + std::to_string(token1.length() + 1) + ";\n";
+            define_section += token2 + ".print_key = \"\%s\";\n";
+        } else if (token1.find("false") != std::string::npos || token1.find("true") != std::string::npos) {
+            define_string = "variable_t " + token2 + ";\n";
+            define_string += token2 + ".type = TYPE_BOOL;\n";
+            define_string += token2 + ".value.b = " + token1 + ";\n";
+            define_section += token2 + ".print_key = \"\%d\";\n";
+        } else {
+            define_string = "variable_t " + token2 + ";\n";
+            define_string += token2 + ".type = TYPE_INT;\n";
+            define_string += token2 = ".value.b = " + token1 + ";\n";
+            define_section += token2 + ".print_key = \"\%d\";\n";
+        }
+    } else {
+        define_section = "variable_t " + args + ";\n";
+    }
+    
+    this->main_section.append(define_string);
+
+    /*
     std::string define_string;
     if (args.find(',') != std::string::npos) {
         std::string token1, token2, type;
@@ -111,6 +166,7 @@ const void Parser::init(std::string args) {
     }
     define_string += ";\n";
     this->main_section.append(define_string);
+    */
 }
 
 /*
