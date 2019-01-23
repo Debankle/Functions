@@ -68,6 +68,7 @@ const void Compiler::Parse() {
     Parser parser(this->tokens);
     parser.Parse();
     this->cCode = parser.getCode();
+    std::cout << this->cCode << std::endl;
 }
 
 /*
