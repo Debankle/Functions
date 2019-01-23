@@ -26,25 +26,22 @@ typedef enum { false, true } bool;
 
 typedef enum { TYPE_INT, TYPE_STRING, TYPE_BOOL, TYPE_NULL } types_t;
 
-/* Not sure if this is worth using as a type
 typedef struct {
     char *s;
     size_t len;
 } string_t;
-*/
 
 typedef union {
     int i;
-    //string_t s;
-    char *s;
+    string_t s;
     bool b;
 } values_t;
 
 typedef struct {
     values_t value;
     int type;
+    char *print_key;
 } variable_t;
-
 
 int main() {
     variable_t a;
@@ -59,7 +56,7 @@ int main() {
     c.type = TYPE_STRING;
     //c.value.s.s = "Hello";
     //c.value.s.len = strlen(c.value.s.s);
-    c.value.s = "Hello";
+    c.value.s.s = "Hello";
 
     variable_t d;
     d.type = TYPE_NULL;
