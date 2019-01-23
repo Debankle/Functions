@@ -15,9 +15,14 @@
 // along with Functions.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+#ifndef __FUNCTIONS_VARIABLE_H
+#define __FUNCTIONS_VARIABLE_H
+
 #include <stdio.h>
 
-enum { TYPE_INT, TYPE_FLOAT, TYPE_DOUBLE, TYPE_BOOL, TYPE_STRING, TYPE_NULL };
+typedef enum { TYPE_INT, TYPE_FLOAT, TYPE_DOUBLE, TYPE_BOOL, TYPE_STRING, TYPE_NULL } type_t;
+
+typedef enum { false, true } bool;
 
 typedef struct {
     char *s;
@@ -34,6 +39,8 @@ typedef union {
 
 typedef struct {
     values value;
-    int type;
+    type_t type;
     char *name;
 } variable_t;
+
+#endif // __FUNCTIONS_VARIABLE_H
