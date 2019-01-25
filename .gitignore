@@ -8,6 +8,7 @@ src/concept
 
 # Ignore IDE extras
 .vscode/
+.idea/
 
 # Ignore System Files
 .DS_Store
