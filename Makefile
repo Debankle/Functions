@@ -29,3 +29,5 @@ test: $(TEST)
 clean:
 	rm -rf $(TARGET)
 	find tests/ -not -name "*.func" -type f | xargs rm -rf
+	rm -rf src/concept
+	rm -rf test/Test
