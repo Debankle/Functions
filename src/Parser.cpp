@@ -118,17 +118,17 @@ const void Parser::init(std::string args) {
             define_string += token2 + ".type = TYPE_STRING;\n";
             define_string += token2 + ".value.s.s = " + token1 + ";\n";
             define_section += token2 + ".value.s.len = " + std::to_string(token1.length() + 1) + ";\n";
-            define_section += token2 + ".print_key = \"\%s\";\n";
+            define_section += token2 + ".print_key = \"%s\";\n";
         } else if (token1.find("false") != std::string::npos || token1.find("true") != std::string::npos) {
             define_string = "variable_t " + token2 + ";\n";
             define_string += token2 + ".type = TYPE_BOOL;\n";
             define_string += token2 + ".value.b = " + token1 + ";\n";
-            define_section += token2 + ".print_key = \"\%d\";\n";
+            define_section += token2 + ".print_key = \"%d\";\n";
         } else {
             define_string = "variable_t " + token2 + ";\n";
             define_string += token2 + ".type = TYPE_INT;\n";
             define_string += token2 = ".value.b = " + token1 + ";\n";
-            define_section += token2 + ".print_key = \"\%d\";\n";
+            define_section += token2 + ".print_key = \"%d\";\n";
         }
     } else {
         define_section = "variable_t " + args + ";\n";
