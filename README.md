@@ -5,7 +5,7 @@
 This language began development over the summer holidays, as I had nothing better to do. It was just a fun little project to see how much I knew, expand my knowledge, and challenge myself with something new. I created it to be an example of very basic programming, to demonstrate to my friends what I do in a simple way, and to show off, and say I had my own language. I don't see any real purpose for it, other than just a bit of fun.
 
 ### Installation
-Read the [INSTALL.md](/INSTALL.md) for instructions on how to install
+Read the [INSTALL.md](/docs/INSTALL.md) for instructions on how to install
 
 ### Usage
 This language is a compiler/transpiler, as it converts the written code to c++, and then uses gcc to compile this down to a binary.  
