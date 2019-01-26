@@ -1,21 +1,15 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8)
 
-PROJECT(Functions)
+project(Functions)
 
-EXECUTE_PROCESS(COMMAND )
-SET(CMAKE_CXX_FLAGS "-Wall -std=c++17 --pedantic-errors")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin")
 
-SET(CMAKE_C_COMPILER /usr/local/bin/gcc-8)
-SET(CMAKE_CXX_COMPILER /usr/local/bin/g++-8)
-SET(CMAKE_CXX_STANDARD 14)
-SET(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
-SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+if(UNIX)
+    set(CMAKE_CXX_FLAGS "-Wall -O2 --pedantic-errors -DGCC=\"$(shell which gcc)\"")
+endif()
 
-INCLUDE_DIRECTORIES("${PROJECT_SOURCE_DIR}/include")
+include_directories("${Functions_SOURCE_DIR}/include")
+file(GLOB Functions_SOURCES "${Functions_SOURCE_DIR}/src/*.cpp")
 
-FILE(GLOB function_SRC
-        "src/*.cpp"
-        )
-
-ADD_EXECUTABLE(func ${function_SRC})
+add_executable(func ${Functions_SOURCES})
