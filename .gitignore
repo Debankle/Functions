@@ -1,6 +1,7 @@
 # Ignore compiled binary
 bin/*
 !bin/.gitkeep
+build
 
 # Ignore compiled tests
 tests/*
