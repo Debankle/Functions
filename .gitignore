@@ -4,8 +4,7 @@ bin/*
 build
 
 # Ignore compiled tests
-tests/*
-!/tests/*.*
+tests/test
 src/concept
 
 # Ignore IDE extras
