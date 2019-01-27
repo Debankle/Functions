@@ -4,8 +4,8 @@ bin/*
 build
 
 # Ignore compiled tests
-tests/test
 src/concept
+tests/*
 
 # Ignore IDE extras
 .vscode/
