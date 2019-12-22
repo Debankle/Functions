@@ -3,9 +3,6 @@ require(sys)
 init(a)
 init(b, 4)
 init(c, "hello world")
-
-out(a)
-out(b)
-out(c)
+init(d, true)
 
 done(0)

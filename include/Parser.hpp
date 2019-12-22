@@ -52,6 +52,7 @@ class Parser {
     std::vector<std::string> tokens;
     std::map<std::string, std::string> includes = {{"sys", "stdio.h"}};
 
+    std::string type_definitions;
     std::string define_section;
     std::string include_section;
     std::string main_section;

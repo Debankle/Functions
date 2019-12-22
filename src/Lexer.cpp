@@ -41,4 +41,9 @@ const void Lexer::Lex() {
     }
 }
 
-std::vector<std::string> Lexer::returnTokens() { return this->tokens; }
+std::vector<std::string> Lexer::returnTokens() { 
+    // for (auto i : this->tokens ) {
+    //     std::cout << i << std::endl;
+    // }
+    return this->tokens; 
+}
