@@ -19,13 +19,15 @@
 
 Parser::Parser(std::vector<std::string> tokens) {
     this->tokens = tokens;
-    this->define_section.append("typedef enum { false, true } bool;\n");
-    this->define_section.append("typedef enum { TYPE_INT, TYPE_BOOL, TYPE_STRING } types_t;\n");
-    this->define_section.append(
+    this->type_definitions.append("typedef enum { false, true } bool;\n");
+    this->type_definitions.append(
+        "typedef enum { TYPE_INT, TYPE_BOOL, TYPE_STRING } types_t;\n");
+    this->type_definitions.append(
         "typedef struct { char *s; size_t len; } string_t;\n");
-    this->define_section.append(
+    this->type_definitions.append(
         "typedef union { int i; string_t s; bool b; } values_t;\n");
-    this->define_section.append("typedef struct { values_t value; int type; } variable_t;\n");
+    this->type_definitions.append(
+        "typedef struct { values_t value; int type; } variable_t;\n");
 }
 
 /*
@@ -74,8 +76,9 @@ const void Parser::Parse() {
             exit(1);
         }
     }
-    this->raw_code = this->include_section + this->define_section +
-                     "int main() {\n" + this->main_section + "}";
+    this->raw_code = this->include_section + this->type_definitions +
+                     "int main() {\n" + this->define_section +
+                     this->main_section + "}";
 }
 
 const void Parser::require(std::string args) {
@@ -106,34 +109,33 @@ const void Parser::init(std::string args) {
 
         for (char c : args) {
             if (c == ',') {
-                token2 = token1;
-                token1 = "";
+                token1 = token2;
+                token2 = "";
             } else {
-                token1 += c;
+                token2 += c;
             }
         }
 
-        if (token1.find("\"") != std::string::npos) {
-            define_string = "variable_t " + token2 + ";\n";
-            define_string += token2 + ".type = TYPE_STRING;\n";
-            define_string += token2 + ".value.s.s = " + token1 + ";\n";
-            define_section += token2 + ".value.s.len = " + std::to_string(token1.length() + 1) + ";\n";
-            define_section += token2 + ".print_key = \"%s\";\n";
-        } else if (token1.find("false") != std::string::npos || token1.find("true") != std::string::npos) {
-            define_string = "variable_t " + token2 + ";\n";
-            define_string += token2 + ".type = TYPE_BOOL;\n";
-            define_string += token2 + ".value.b = " + token1 + ";\n";
-            define_section += token2 + ".print_key = \"%d\";\n";
+        if (token2.find("\"") != std::string::npos) {
+            define_string = "variable_t " + token1 + ";\n";
+            define_string += token1 + ".type = TYPE_STRING;\n";
+            define_string += token1 + ".value.s.s = " + token2 + ";\n";
+            define_string += token1 + ".value.s.len = " +
+                              std::to_string(token2.length() + 1) + ";\n";
+        } else if (token2.find("false") != std::string::npos ||
+                   token2.find("true") != std::string::npos) {
+            define_string = "variable_t " + token1 + ";\n";
+            define_string += token1 + ".type = TYPE_BOOL;\n";
+            define_string += token1 + ".value.b = " + token2 + ";\n";
         } else {
-            define_string = "variable_t " + token2 + ";\n";
-            define_string += token2 + ".type = TYPE_INT;\n";
-            define_string += token2 = ".value.b = " + token1 + ";\n";
-            define_section += token2 + ".print_key = \"%d\";\n";
+            define_string = "variable_t " + token1 + ";\n ";
+            define_string += token1 + ".type = TYPE_INT;\n ";
+            define_string += token1 + ".value.b = " + token2 + ";\n ";
         }
     } else {
-        define_section = "variable_t " + args + ";\n";
+        define_string = "variable_t " + args + ";\n";
     }
-    
+
     this->main_section.append(define_string);
 
     /*
